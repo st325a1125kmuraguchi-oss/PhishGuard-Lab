@@ -1,0 +1,28 @@
+name: Strix Security Penetration Test
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  strix-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Strix
+        run: curl -sSL https://strix.ai/install | bash
+
+      - name: Run Strix Autonomous Security Scan
+        env:
+          STRIX_LLM: ${{ secrets.STRIX_LLM }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          strix -n --target ./ --scan-mode quick --max-budget 10

@@ -1,0 +1,6 @@
+{
+  "name": "PhishGuard Lab - フィッシング詐欺体験シミュレーター",
+  "description": "実例に基づく本物に似せた偽メールや偽サイトを見極める体験型トレーニング。怪しいURLの構造や不自然な文面、騙しの心理テクニックをインタラクティブに解説します。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
